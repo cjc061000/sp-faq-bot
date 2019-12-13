@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿/// <reference path="luisactions.js" />
 
-// Write your JavaScript code.
+jQuery(
+    function () {
+        $('#QueryText').on('keydown', function (e) {
+            if (e.which === 13) {
+                QueryTextEnter();
+            }
+        });
+    }
+);
