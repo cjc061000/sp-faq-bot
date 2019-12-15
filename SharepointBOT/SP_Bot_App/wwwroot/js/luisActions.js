@@ -1,4 +1,10 @@
-﻿//Enter key pressed on query
+﻿/// <reference path="../lib/pnp/pnp.js" />
+/// <reference path="../lib/pnp/fetch.js" />
+
+import { decode } from "querystring";
+import { $pnp } from "../lib/pnp/pnp";
+
+//Enter key pressed on query
 //make the call to LUIS using the query text to determine intent
 function QueryTextEnter() {
     var queryText = jQuery("#QueryText").val();
@@ -31,7 +37,9 @@ function QueryTextEnter() {
             console.log("entity:", data.entities[0]);
         }
         console.log("intent:", intent);
-        console.log("data",data);
+        console.log("data", data);
+
+        
     });
     call.fail(function (jqXHR, textStatus, errorThrown) {
         alert("Fail");
