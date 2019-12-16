@@ -7,5 +7,9 @@ jQuery(
                 QueryTextEnter();
             }
         });
+        function PostGreeting() {
+            PostResponse("Hello there! <img height='50' src='https://i.kym-cdn.com/entries/icons/original/000/029/079/hellothere.jpg' ></img>");
+        }
+        $(document).ready(function () { PostGreeting(); });
     }
 );

@@ -34,6 +34,10 @@ function QueryTextEnter() {
         var intent = data.topScoringIntent.intent;
         var searchTerm = '';
         if (intent === 'SearchForDocument') {
+            if (data.entities.length < 1) {
+                PostResponse("I think you are trying to do a search, but I can't quite understand what you want me to use as search term.");
+                PostResponse('Try something like "I want to search for \"documents\""');
+            }
             for (var i = 0; i < data.entities.length; i++) {
                 var thisEntity = data.entities[i];
                 if (thisEntity.type === 'SearchTerm') {
@@ -41,9 +45,11 @@ function QueryTextEnter() {
                     break;
                 }
             }
-            if (data.entities.length > 0) {
-                console.log("entity:", data.entities[0]);
-            }
+        }
+        else {
+            PostResponse("Sorry, I don't understand what you are trying to do. I can only do Sharepoint Searches ... for now... <br/> \
+Try something like: I want to search for \"consulting framework expectations\"");
+            return;
         }
         if (searchTerm !== '') {
             // send to logic app
